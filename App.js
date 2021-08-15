@@ -34,11 +34,11 @@ export const authService = firebase.auth();
 
 export const dbService = firebase.firestore();
 
-export const onSubmit = () => {
+export const sendData = (data) => {
   dbService
-    .collection("YEAH")
+    .collection(data)
     .add({
-      msg: "data",
+      msg: data,
       createdAt: Date.now(),
     })
     .then(() => {
@@ -52,8 +52,9 @@ export default function App() {
     <View style={styles.container}>
       <Text>Good Day!!</Text>
       <Button
+        title="테스트!"
         onPress={() => {
-          onSubmit();
+          sendData("fromEXPO-2");
         }}
       />
     </View>
